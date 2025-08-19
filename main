@@ -1,10 +1,12 @@
 import java.util.Scanner;
 public class main {
-    public static void main(String[] args) {
+    public static void Main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int genero;
-        int raca;
-
+        int escolhaRaca;
+        String raca = "";
+        int escolhaClasse;
+        String classe = ""; 
 
         printLento("Bem vindo à Sereia Caolha!\n",10);
         printLento("Conheça minha taverna, apesar da bagunça e dos gritos, pode ser um lugar bem acolhedor.\nMe chamo Marley, e mesmo com a minha altura, tenho um grande Figado(Ele é um anão).\n\n",25);
@@ -53,20 +55,24 @@ public class main {
                 scan.next(); // descarta a entrada inválidae
                 continue;
             }
-            raca = scan.nextInt();
+            escolhaRaca = scan.nextInt();
 
-            switch (raca) {
+            switch (escolhaRaca) {
                 case 1:
                     printLento("Faz anos que não vejo um de vocês.\n", 10);
+                    raca = "Humano";
                     break;
                 case 2:
                     printLento("Temos um dos grandes aqui.\n", 10);
+                    raca = "Orc";
                     break;
                 case 3:
                     printLento("Espero que minha espelunca não o(a) incomode.\n",10);
+                    raca = "Elfo";
                     break;
                 case 4:
                     printLento("Ah! Você é um dos meus.\n",10);
+                    raca = "Anão";
                     break;
                 default:
                     printLento("Escolha uma opção válida.\n", 10);
@@ -74,7 +80,51 @@ public class main {
             }
             break;
         }
+
+        while (true) {
+            printLento("Qual sua especialidade?\n" +
+                    "[1]Guerreiro\n" +
+                    "[2]Ladino\n" +
+                    "[3]Mago\n" +
+                    "[4]Arqueiro\n", 30);
+
+            System.out.println(" ");
+            if (!scan.hasNextInt()) {
+                System.out.println("Entrada inválida. Tente novamente.\n");
+                scan.next(); // descarta a entrada inválidae
+                continue;
+            }
+            escolhaClasse = scan.nextInt();
+           
+
+            switch (escolhaClasse) {
+                case 1:
+                    printLento("Contaremos com você.\n", 10);
+                    classe = "Guerreiro";
+                    break;
+                case 2:
+                    printLento("Fique longe da minha carteira.\n", 10);
+                    classe = "Ladino";
+                    break;
+                case 3:
+                    printLento("FIRE BALL!\n", 10);
+                    classe = "Mago";
+                    break;
+                    case 4:
+                    printLento("Só não erre a mira\n", 10);
+                    break;
+                default:
+                    printLento("Escolha uma opção válida.\n", 10);
+                    continue;
+            }
+            break;
+        }
+        personagem p = new personagem(raca, classe);
+        p.exibirVida();
     }
+
+    
+    
 
     public static void printLento(String texto, long delayMillis) {
         for (char c : texto.toCharArray()) {
