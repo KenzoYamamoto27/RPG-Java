@@ -1,0 +1,90 @@
+public class personagem {
+    private String nome;
+    private String raca;
+    private String classe;
+    private int vida;
+    private int forca;
+    private int mana;
+    
+    public personagem(String raca, String classe){
+        this.raca = raca;
+        this.classe = classe;
+        this.vida = 100;
+    }
+
+    private void vidaPorRaca(String raca){
+        switch (raca.toLowerCase()) {
+            case "Humano":
+                vida += 0; 
+                break;
+            case "Orc":
+                vida += 50;
+                break;
+            case "Elfo":
+                vida -= 20;
+                break;
+            case "Anão":
+                vida += 30;
+                break;
+            default:
+                vida += 0;
+                break;
+        }
+    }
+
+    private void vidaPorClasse(String classe){
+        switch (classe.toLowerCase()) {
+            case "Guerreiro":
+                vida += 15; 
+                break;
+            case "Ladino":
+                vida -= 10;
+                break;
+            case "Mago":
+                vida -= 20;
+                break;
+            case "Arqueiro":
+                vida += 10;
+                break;
+            default:
+                vida += 0;
+                break;
+        }
+    }
+
+    public String getRaca() {
+        return raca;
+    }
+    public String getClasse() {
+        return classe;
+    }
+    public int getVida() {
+        return vida;
+    }
+    public int getForca() {
+        return forca;
+    }
+    public int getMana() {
+        return mana;
+    }
+
+    public void setRaca(String raca) {
+        this.raca = raca;
+    }
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+    public void setForca(int forca) {
+        this.forca = forca;
+    }
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+      public void exibirVida() {
+        System.out.println("Raça: " + raca + " | Especialidade: " + classe + " | Vida: " + vida);
+    }
+}
