@@ -1,0 +1,16 @@
+public class Dialogo {
+    public static void introducao() {
+        Main.printLento("Bem vindo ao Sereia Caolha!\n", 10);
+        Main.printLento("Conheça minha taverna. Apesar da bagunça e dos gritos, pode ser um lugar bem acolhedor.\n", 20);
+        Main.printLento("Me chamo Marley, e mesmo com a minha altura, tenho um grande fígado. (Ele é um anão)\n\n", 20);
+        Main.printLento("Apresente-se por favor!\n\n", 10);
+    }
+
+    public static void missao(Personagem p){
+        Main.printLento(p.getNome() + ", fiquei sabendo que você faz uns serviços de mercenário e preciso da sua ajuda.\nTem um lobo que está acabando com as minhas pobres ovelhas, poderia dar conta dele pra mim? Preciso alimentar esses clientes.", 20);
+    }
+
+    public static void despedida(Personagem p) {
+        Main.printLento("\nBoa sorte em sua aventura, " + p.getNome() + "!\n", 15);
+    }
+}
