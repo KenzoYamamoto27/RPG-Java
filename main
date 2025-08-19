@@ -1,12 +1,14 @@
 import java.util.Scanner;
-public class main {
-    public static void Main(String[] args) {
+public class Main {
+
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int genero;
         int escolhaRaca;
         String raca = "";
         int escolhaClasse;
-        String classe = ""; 
+        String classe = "";
+        String nome = "";
 
         printLento("Bem vindo à Sereia Caolha!\n",10);
         printLento("Conheça minha taverna, apesar da bagunça e dos gritos, pode ser um lugar bem acolhedor.\nMe chamo Marley, e mesmo com a minha altura, tenho um grande Figado(Ele é um anão).\n\n",25);
@@ -15,8 +17,7 @@ public class main {
         while (true) {
             printLento("Qual genero?\n" +
                     "[1]Masculino\n" +
-                    "[2]Feminino\n" +
-                    "[3]Helicopter", 20);
+                    "[2]Feminino\n", 20);
             System.out.println(" ");
             if (!scan.hasNextInt()) {
                 System.out.println("Entrada inválida. Tente novamente.\n");
@@ -31,9 +32,6 @@ public class main {
                     break;
                 case 2:
                     printLento("Seja bem vinda, bela dama.\n", 10);
-                    break;
-                case 3:
-                    printLento("HELICOPTER HELICOPTER PARACOPTER PARACOPTER!\n", 15);
                     break;
                 default:
                     printLento("Escolha uma opção válida.\n", 10);
@@ -95,7 +93,6 @@ public class main {
                 continue;
             }
             escolhaClasse = scan.nextInt();
-           
 
             switch (escolhaClasse) {
                 case 1:
@@ -110,8 +107,9 @@ public class main {
                     printLento("FIRE BALL!\n", 10);
                     classe = "Mago";
                     break;
-                    case 4:
+                case 4:
                     printLento("Só não erre a mira\n", 10);
+                    classe = "Arqueiro";
                     break;
                 default:
                     printLento("Escolha uma opção válida.\n", 10);
@@ -119,12 +117,15 @@ public class main {
             }
             break;
         }
-        personagem p = new personagem(raca, classe);
-        p.exibirVida();
-    }
+        printLento("\nEu já ia me esquecendo, qual é o seu nome?", 15);
+        System.out.println(" ");
+        scan.nextLine();
+        nome = scan.nextLine();
 
-    
-    
+        personagem p1 = new personagem(nome, raca, classe);
+        p1.aplicarBonus();
+        p1.exibirStatus();
+    }
 
     public static void printLento(String texto, long delayMillis) {
         for (char c : texto.toCharArray()) {
@@ -136,6 +137,5 @@ public class main {
                 Thread.currentThread().interrupt();
             }
         }
-    
     }
 }
