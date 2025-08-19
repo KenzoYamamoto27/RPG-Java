@@ -10,18 +10,18 @@ public class Main {
         String classe = "";
         String nome = "";
 
-        printLento("Bem vindo à Sereia Caolha!\n",10);
-        printLento("Conheça minha taverna, apesar da bagunça e dos gritos, pode ser um lugar bem acolhedor.\nMe chamo Marley, e mesmo com a minha altura, tenho um grande Figado(Ele é um anão).\n\n",25);
-        printLento("Apresente-se por favor!\n\n",10);
 
+        Dialogo.introducao();
+
+        
         while (true) {
-            printLento("Qual genero?\n" +
+            printLento("\nQual genero?\n" +
                     "[1]Masculino\n" +
                     "[2]Feminino\n", 20);
             System.out.println(" ");
             if (!scan.hasNextInt()) {
                 System.out.println("Entrada inválida. Tente novamente.\n");
-                scan.next(); // descarta a entrada inválidae
+                scan.next();
                 continue;
             }
             genero = scan.nextInt();
@@ -41,7 +41,7 @@ public class Main {
         }
 
         while (true) {
-            printLento("Qual raça você pertence?\n" +
+            printLento("\nQual raça você pertence?\n" +
                     "[1]Humano\n" +
                     "[2]Orc\n" +
                     "[3]Elfo\n" +
@@ -50,7 +50,7 @@ public class Main {
 
             if (!scan.hasNextInt()) {
                 printLento("Entrada inválida. Tente novamente.\n", 10);
-                scan.next(); // descarta a entrada inválidae
+                scan.next();
                 continue;
             }
             escolhaRaca = scan.nextInt();
@@ -80,7 +80,7 @@ public class Main {
         }
 
         while (true) {
-            printLento("Qual sua especialidade?\n" +
+            printLento("\nQual sua especialidade?\n" +
                     "[1]Guerreiro\n" +
                     "[2]Ladino\n" +
                     "[3]Mago\n" +
@@ -89,7 +89,7 @@ public class Main {
             System.out.println(" ");
             if (!scan.hasNextInt()) {
                 System.out.println("Entrada inválida. Tente novamente.\n");
-                scan.next(); // descarta a entrada inválidae
+                scan.next();
                 continue;
             }
             escolhaClasse = scan.nextInt();
@@ -117,15 +117,21 @@ public class Main {
             }
             break;
         }
+
         printLento("\nEu já ia me esquecendo, qual é o seu nome?", 15);
         System.out.println(" ");
         scan.nextLine();
         nome = scan.nextLine();
 
-        personagem p1 = new personagem(nome, raca, classe);
+        Personagem p1 = new Personagem(nome, raca, classe);
         p1.aplicarBonus();
         p1.exibirStatus();
+
+        Dialogo.missao(p1);
+        
+        Dialogo.despedida(p1);
     }
+
 
     public static void printLento(String texto, long delayMillis) {
         for (char c : texto.toCharArray()) {
@@ -138,4 +144,5 @@ public class Main {
             }
         }
     }
+
 }
