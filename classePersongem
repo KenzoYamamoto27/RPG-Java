@@ -1,47 +1,54 @@
-public class personagem {
+public class Personagem {
     private String nome;
     private String raca;
     private String classe;
     private int vida;
     private int forca;
     private int mana;
+    private int inteligencia;
     private int destreza;
 
-    public personagem(String nome, String raca, String classe){
+    public Personagem(String nome, String raca, String classe){
         this.nome = nome;
         this.raca = raca;
         this.classe = classe;
-        this.vida = 100;
-        this.forca = 50;
+        this.vida = 0;
+        this.forca = 0;
         this.mana = 0;
-        this.destreza = 50;
+        this.inteligencia = 0;
+        this.destreza = 0;
+        
     }
 
     private void statusPorRaca(String raca){
         switch (raca) {
             case "Humano":
-                vida += 10;
-                forca += 10;
-                mana += 10;
-                destreza += 10;
+                vida += 110;
+                forca += 60;
+                mana += 30;
+                inteligencia += 60;
+                destreza += 60;
                 break;
             case "Orc":
-                vida += 40;
-                forca += 25;
-                mana += 0;
-                destreza -= 15;
+                vida += 140;
+                forca += 80;
+                mana += 10;
+                inteligencia += 45;
+                destreza += 40;
                 break;
             case "Elfo":
-                vida += 0;
-                forca += 0;
-                mana += 40;
-                destreza += 20;
+                vida += 100;
+                forca += 50;
+                mana += 45;
+                inteligencia += 60;
+                destreza += 70;
                 break;
             case "Anão":
-                vida += 30;
-                forca += 20;
-                mana += 10;
-                destreza -= 15;
+                vida += 130;
+                forca += 70;
+                mana += 20;
+                inteligencia += 60;
+                destreza += 45;
                 break;
             default:
                 break;
@@ -54,24 +61,28 @@ public class personagem {
                 vida += 30;
                 forca += 25;
                 mana += 0;
+                inteligencia += 5;
                 destreza -= 10;
                 break;
             case "Ladino":
                 vida += 10;
                 forca += 25;
                 mana += 0;
+                inteligencia += 10;
                 destreza += 30;
                 break;
             case "Mago":
                 vida -= 10;
                 forca += 0;
                 mana += 40;
+                inteligencia += 20;
                 destreza += 10;
                 break;
             case "Arqueiro":
                 vida += 15;
                 forca += 15;
                 mana += 10;
+                inteligencia += 15;
                 destreza += 20;
                 break;
             default:
@@ -102,6 +113,12 @@ public class personagem {
     public int getMana() {
         return mana;
     }
+    public int getDestreza() {
+        return destreza;
+    }
+    public int getInteligencia() {
+        return inteligencia;
+    }
 
 
     public void setNome(String nome) {
@@ -122,10 +139,20 @@ public class personagem {
     public void setMana(int mana) {
         this.mana = mana;
     }
+    public void setDestreza(int destreza) {
+        this.destreza = destreza;
+    }
+    public void setInteligencia(int inteligencia) {
+        this.inteligencia = inteligencia;
+    }
 
     public void exibirStatus() {
-        Main.printLento("\nEntão, "+ nome + ", as suas informações são: ", 15);
-        Main.printLento("Raça: " + raca + "\nEspecialidade: " + classe +
-                "\n❤Vida: " + vida + " | 💪Força: " + forca + " | 🔷Mana: " + mana + " | 🤸‍♂️qDestreza: " + destreza, 20);
+    
+        Main.printLento("\nEntão, "+ nome + ", as suas informações são: \n", 15);
+        System.out.println("===== FICHA DO PERSONAGEM =====");
+        Main.printLento("\nRaça: " + raca + "\nClasse: " + classe +
+                "\n\nVida: " + vida + "\nForça: " + forca + "\nMana: " + mana + "\nInteligência: " + inteligencia + "\nDestreza: " + destreza, 20);
+                System.out.println(" \n");
+        System.out.println("==============================");
     }
 }
