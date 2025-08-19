@@ -5,53 +5,88 @@ public class personagem {
     private int vida;
     private int forca;
     private int mana;
-    
-    public personagem(String raca, String classe){
+    private int destreza;
+
+    public personagem(String nome, String raca, String classe){
+        this.nome = nome;
         this.raca = raca;
         this.classe = classe;
         this.vida = 100;
+        this.forca = 50;
+        this.mana = 0;
+        this.destreza = 50;
     }
 
-    private void vidaPorRaca(String raca){
-        switch (raca.toLowerCase()) {
+    private void statusPorRaca(String raca){
+        switch (raca) {
             case "Humano":
-                vida += 0; 
+                vida += 10;
+                forca += 10;
+                mana += 10;
+                destreza += 10;
                 break;
             case "Orc":
-                vida += 50;
+                vida += 40;
+                forca += 25;
+                mana += 0;
+                destreza -= 15;
                 break;
             case "Elfo":
-                vida -= 20;
+                vida += 0;
+                forca += 0;
+                mana += 40;
+                destreza += 20;
                 break;
             case "Anão":
                 vida += 30;
+                forca += 20;
+                mana += 10;
+                destreza -= 15;
                 break;
             default:
-                vida += 0;
                 break;
         }
     }
 
-    private void vidaPorClasse(String classe){
-        switch (classe.toLowerCase()) {
+    private void statusPorClasse(String classe){
+        switch (classe) {
             case "Guerreiro":
-                vida += 15; 
+                vida += 30;
+                forca += 25;
+                mana += 0;
+                destreza -= 10;
                 break;
             case "Ladino":
-                vida -= 10;
+                vida += 10;
+                forca += 25;
+                mana += 0;
+                destreza += 30;
                 break;
             case "Mago":
-                vida -= 20;
+                vida -= 10;
+                forca += 0;
+                mana += 40;
+                destreza += 10;
                 break;
             case "Arqueiro":
-                vida += 10;
+                vida += 15;
+                forca += 15;
+                mana += 10;
+                destreza += 20;
                 break;
             default:
-                vida += 0;
                 break;
         }
     }
 
+    public void aplicarBonus() {
+        statusPorRaca(raca);
+        statusPorClasse(classe);
+    }
+
+    public String getNome() {
+        return nome;
+    }
     public String getRaca() {
         return raca;
     }
@@ -68,6 +103,10 @@ public class personagem {
         return mana;
     }
 
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
     public void setRaca(String raca) {
         this.raca = raca;
     }
@@ -84,7 +123,9 @@ public class personagem {
         this.mana = mana;
     }
 
-      public void exibirVida() {
-        System.out.println("Raça: " + raca + " | Especialidade: " + classe + " | Vida: " + vida);
+    public void exibirStatus() {
+        Main.printLento("\nEntão, "+ nome + ", as suas informações são: ", 15);
+        Main.printLento("Raça: " + raca + "\nEspecialidade: " + classe +
+                "\n❤Vida: " + vida + " | 💪Força: " + forca + " | 🔷Mana: " + mana + " | 🤸‍♂️qDestreza: " + destreza, 20);
     }
 }
